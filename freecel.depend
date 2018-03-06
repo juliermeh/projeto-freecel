@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1520293500 source:/home/jose/Documentos/freecel/main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+	"main.h"
+
+1520291873 /home/jose/Documentos/freecel/main.h
+	"Pilha.h"
+
+1520290986 /home/jose/Documentos/freecel/Pilha.h
+	<stdlib.h>
+
+1520291873 source:/home/jose/Documentos/freecel/Pilha.c
+	"Pilha.h"
+
+1520291475 source:/home/jose/Documentos/freecel/Ui.c
+	<stdlib.h>
+	<stdio.h>
+	<strings.h>
+	"main.h"
+	"Pilha.h"
+
