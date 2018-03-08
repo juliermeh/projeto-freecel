@@ -150,8 +150,8 @@ void drawRequestHandle()
         case GAME_STATUS_START:
             printf("Bem-vindo ao Freecel! Acima, voce vera suas cartas!\n");
         case GAME_STATUS_CHOSECARD:
-            printf("Escolha a fileira da carta ao qual deseja mover! ");
-            printf("Opcoes validas: a, b, c, d, e, f, g, h, 1, 2, 3, 4\n");
+            printf("Escolha a fileira da carta ao qual deseja mover!");
+            printf("\nOpcoes validas: a, b, c, d, e, f, g, h, 1, 2, 3, 4\n");
             break;
         case GAME_STATUS_CHOSETARGET:
             printf("Escolha a fileira de destino da carta ");
