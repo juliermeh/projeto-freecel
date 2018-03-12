@@ -1,0 +1,46 @@
+Pilha.h
+------------------------------------------------------------------------------------------------
+typedef struct ItemList
+{
+    int value; /No futuro, achar um método de transformar este tipo em algo mais dinâmico
+    struct ItemList *next;
+}Item;
+
+
+ typedef struct ItemList
+{
+    int valor;/No futuro, achar um método de transformar este tipo em algo mais dinâmico
+    struct ItemList *proximo;
+}Item;
+
+-------------------------------------------------------------------------------------------------
+
+typedef struct PileStructure
+{
+    Item *start;
+    int length;  // length ao inves de size, pois size ja é definido para outras coisas
+}Pile;
+
+typedef struct PilhaStructure
+{
+    Item *start;
+    int length; // length ao inves de size, pois size ja é definido para outras coisas
+}Pilha;
+---------------------------------------------------------------------------------------------------
+
+
+Pile* createPile();/Pilha* crearPilha();
+
+int addNewItemPile(Pile* pile, int value);/int adicionarNovoItemPilha(Pilha* pilha, int valor);
+
+int addItemPile(Pile* pile, Item* item);/int adicionarItemPilha(Pilha* pilha, Item* item);
+
+Item* removeTopItemPile(Pile* pile);/Item* removeTopItemPilha(Pilha* pilha);
+
+int deleteItem(Item* item);/ n�o precisei traduzir
+
+int deletePile(Pile* pile);/int deletePilha(Pilha* pilha);
+
+Item* getPreviousItemOnPile(Item *item, Pile *pile);/
+
+
