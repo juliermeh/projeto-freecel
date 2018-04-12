@@ -1,25 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * File:   main.c
- * Author: jose
- *
- * Created on 5 de Março de 2018, 19:58
- */
-
 #include <stdio.h>
 #include <stdlib.h>
-//#include <windows.h>
+#include <windows.h>
 #include <math.h>
 #include <time.h>
 #include "main.h"
 
 /////////////////////////////////
-// Cartas são enumeradas de 0 a 51
+// Cartas sao enumeradas de 0 a 51
 // 0 = A Copas
 // 51 = K Espadas
 // 0-12 = copas
@@ -28,7 +15,7 @@
 // 39-51 = espadas
 
 // (valor+1)/13 = categoria(copas/espadas/ouros/paus); 0=C 1=O 2=P 3=E
-// (valor+1)%13 = número(A,2,3,4,5,6,7,8,9,10,J,Q,K)
+// (valor+1)%13 = numero(A,2,3,4,5,6,7,8,9,10,J,Q,K)
 /////////////////////////////////
 
 // void cardToStr(Item *card, char *c)
@@ -66,7 +53,7 @@ void cardToStr(Item *card, char *c)
         break; //K
     default:
         c[1] = '1'+value;
-        break; //Isto só é possível pois os casos para números > 9 já foram cobertos acima
+        break; //Isto sao as possivel pois os casos para numeros > 9 ja� foram cobertos acima
 
     }
 
@@ -107,10 +94,10 @@ void shuffleArray(int *arr, size_t n)
 
 void initializeCards()
 {
-    srand(time(NULL)); //modifica a base do gerador aleatório para não sair a mesma combinação para toda execução
+    srand(time(NULL)); //modifica a base do gerador aleatorio para nao sair a mesma combinacao para toda execucao
     int ar[52];
     size_t i;
-    //Baralho padrão, não embaralhado
+    //Baralho padrao, nao embaralhado
     for(i=0; i<52; i++)
     {
         ar[i] = i;
@@ -124,7 +111,7 @@ void initializeCards()
         top_slots[i] = createPile();
         base_slots[i] = createPile();
         mid_slots[i] = createPile();
-        mid_slots[i+4] = createPile(); //Não precisa de 2 loops
+        mid_slots[i+4] = createPile(); //Nao precisa de 2 loops
     }
 
     //Colocar as cartas nos mid_slots
@@ -201,7 +188,7 @@ int getCardNipe(Item* card)
 }
 
 //int getCardNumber
-//retorna o número da carta, de 0 a 12
+//retorna o numero da carta, de 0 a 12
 //0=A, 1=2, 2=3, etc...
 int getCardNumber(Item* card)
 {
@@ -211,10 +198,10 @@ int getCardNumber(Item* card)
 }
 
 //int canMove(Pile *from, Pile *to)
-//retorna 1 se é possível mexer a carta do topo de from para to
-//retorna 0 se não
+//retorna 1 se sao possivel mexer a carta do topo de from para to
+//retorna 0 se nao
 //Toma como base apenas as regras do jogo para as pilhas do meio
-//Não leva em consideração as pilhas do topo direito, que têm funcionamento diferente.
+//Nao leva em consideracao as pilhas do topo direito, que tem funcionamento diferente.
 int canMove(Pile *from, Pile *to)
 {
     if(from == NULL || to == NULL)
@@ -228,13 +215,13 @@ int canMove(Pile *from, Pile *to)
     if(toReceive == NULL)
         return 1; //Sem carta = pode mecher qualquer carta
 
-    //verificar se o número é válido
+    //verificar se o numero sao valido
     if(getCardNumber(toMove) != getCardNumber(toReceive)-1)
-        return 0; //só pode mexer uma carta 1 numero menor do que a carta alvo, ex 2 para 3
+        return 0; //sao pode mexer uma carta 1 numero menor do que a carta alvo, ex 2 para 3
 
-    //verificar se o nipe é válido
-    //0 não pode combinar com 1, 2 não pode combinar com 3.
-    //A XOR C, pois se o bit da esquerda é diferente, torna o movimento válido
+    //verificar se o nipe sao valido
+    //0 nao pode combinar com 1, 2 nao pode combinar com 3.
+    //A XOR C, pois se o bit da esquerda eh diferente, torna o movimento valido
     if((getCardNipe(toMove) ^ getCardNipe(toReceive)) > 1) //>1 significa 10 ou 11 vs 00 ou 01
         return 1;
 
@@ -243,7 +230,7 @@ int canMove(Pile *from, Pile *to)
 
 //int canMoveToBase(Pile *from)
 //retorna 1 de a carta pode ser posta em uma pilha base
-//retorna 0 se não
+//retorna 0 se nao
 int canMoveToBase(Pile *from)
 {
     if(from == NULL || base_slots[0] == NULL)
@@ -264,17 +251,17 @@ int canMoveToBase(Pile *from)
     else if(getCardNumber(toMove) == 0)
         return 1;
 
-    //Verifica se a carta na pilha é antecessora a esta
+    //Verifica se a carta na pilha eh antecessora a esta
 
 
     return 0;
 }
 
-// Função main() executa o programa.
+// Funcao main() executa o programa.
 int main()
 {
     initializeCards();
     drawBoard();
-    //writeCards();
+    writeCards();
     return 0;
 }

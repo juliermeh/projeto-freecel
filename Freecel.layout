@@ -3,3 +3,31 @@
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="default" />
 </CodeBlocks_layout_file>
+[Editors]
+Order=2,3,4,0,1
+Focused=4
+[Editor_0]
+CursorCol=21
+CursorRow=25
+TopLine=205
+LeftChar=1
+[Editor_1]
+CursorCol=10
+CursorRow=1
+TopLine=1
+LeftChar=1
+[Editor_2]
+CursorCol=1
+CursorRow=1
+TopLine=89
+LeftChar=1
+[Editor_3]
+CursorCol=1
+CursorRow=10
+TopLine=10
+LeftChar=1
+[Editor_4]
+CursorCol=79
+CursorRow=260
+TopLine=1
+LeftChar=1

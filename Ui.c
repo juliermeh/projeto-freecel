@@ -1,3 +1,4 @@
+/* IFPB - Equipe: Julierme Jadon, José Ferreira, Alisson, Juvenal */
 #include <stdlib.h>
 #include <stdio.h>
 #include <strings.h>
@@ -42,19 +43,21 @@ void drawBoard()
         {   } {   } {   } {   }   {   } {   } {   } {   }
           a     b     c     d       e     f     g     h
 
-        In which column is the card you want to take? _
+        Em qual coluna está o cartão que você quer levar?
 
         (depois de selecionar a carta)
-        To where you want to send this card?
-        Valid options: 1,2,3,4,a,b,c,d,e,f,g,h,BASE
-        Enter with the target: _
+        Para onde você quer enviar este cartão?
+        Opções válidas: 1,2,3,4, a, b, c, d, e, f, g, h, BASE
+        Entre com o alvo: _
 
 
-       // NOTA: opï¿½ï¿½es possï¿½veis tambï¿½m sï¿½o o, out, base, nipe
+       // NOTA: opïnioes possiveis tambem sao o, out, base, nipe
 
 
     */
-
+	printf("====================================================\n");
+	printf("Bem-vindo ao Freecel! Abaixo, voce vera suas cartas!\n");
+	printf("====================================================\n \n");
     printf(" #1    #2    #3    #4       \3     \4     \5     \6 \n");
     for(i=0; i<4; i++)
         drawCard(top_slots[i]->start);
@@ -75,7 +78,7 @@ void drawBoard()
     //Perguntas
     drawRequestHandle();
 
-    //Solicitar o usuï¿½rio a executar um comando
+    //Solicitar o usuario a executar um comando
     if(gameStatus != GAME_STATUS_DEFEAT && gameStatus != GAME_STATUS_VICTORY)
         receiveUserInput();
 }
@@ -84,11 +87,11 @@ void drawBoard()
 
 void drawMiddle()
 {
-    //Funï¿½ï¿½o separada para organizar
-    //Para o jogo, ï¿½ mais fï¿½cil manter pilhas de baixo para cima (pelo display)
-    //Porï¿½m para escrever, ï¿½ mais fï¿½cil utilizar pilhas de cima para baixo
+    //Funcao separada para organizar
+    //Para o jogo, eh mais facil manter pilhas de baixo para cima (pelo display)
+    //Porem para escrever, eh mais facil utilizar pilhas de cima para baixo
 
-    //Entï¿½o vou criar novas pilhas temporï¿½rias que sï¿½o cï¿½pias das globais
+    //Entï¿½o vou criar novas pilhas temporarias que sï¿½o cï¿½pias das globais
     //E utilizar estas para imprimir
     if(mid_slots[0] == NULL)
         return;
@@ -97,12 +100,12 @@ void drawMiddle()
     Item *tempItem;
     Item *tmpVector[8];
     int i, j, max_length;
-    max_length = -1; //Inicializaï¿½ï¿½o necessï¿½ria para garantir o uso
+    max_length = -1; //Inicializacao necessaria para garantir o uso
 
     for(i=0; i<8; i++)
     {
         //Terei de criar NOVAS cartas, pois as originais precisam manter seus atributos
-        //Lembrar de deletar tudo ao fim da funï¿½ï¿½o
+        //Lembrar de deletar tudo ao fim da funcao
         tempPile[i] = createPile();
         tempItem = mid_slots[i]->start;
         while(tempItem != NULL)
@@ -111,7 +114,7 @@ void drawMiddle()
             tempItem = tempItem->next;
         }
 
-        max_length = max(max_length, tempPile[i]->length); //serï¿½o usadas mais tarde
+        max_length = max(max_length, tempPile[i]->length); //servico usadas mais tarde
 
     }
 
@@ -137,19 +140,19 @@ void drawMiddle()
 
     printf("  a     b     c     d       e     f     g     h   \n");
 
-    //deletar pilas temporï¿½rias
+    //deletar pilas temporarias
     for(i= 0; i < 8; i++)
         deletePile(tempPile[i]);
-    //funï¿½ï¿½oes em pile.h jï¿½ lidam com os items criados
+    //funcoes em pile.h ja lidam com os items criados
 }
 
 void drawRequestHandle()
 {
-    //Funï¿½ï¿½o para escrever as perguntas
+    //Funcao para escrever as perguntas
     switch(gameStatus)
     {
     case GAME_STATUS_START:
-        printf("Bem-vindo ao Freecel! Acima, voce vera suas cartas!\n");
+        
     case GAME_STATUS_CHOSECARD:
         printf("Escolha a fileira da carta ao qual deseja mover!");
         printf("\nOpcoes validas: a, b, c, d, e, f, g, h, 1, 2, 3, 4\n");
@@ -157,7 +160,7 @@ void drawRequestHandle()
     case GAME_STATUS_CHOSETARGET:
         printf("Escolha a fileira de destino da carta ");
         drawCard(selectedSlot->start);
-        printf("\nOpcoes validas: a, b, c, d, e, f, g, h, 1, 2, 3, 4, base\n");
+        printf("\nOpcoes validas: a, b, c, d, e, f, g, h, 1, 2, 3, 4\n");
         break;
     case GAME_STATUS_DEFEAT:
         printf("Nao ha mais possibilidades de movimento. Jogo Encerrado!");
@@ -241,7 +244,7 @@ void receiveUserInput()
         {
             i = (int)(c[0] - '1');
             targetSlot = top_slots[i];
-            //top_slots may only receive one card at a time
+            //top_slots só pode receber um cartão de cada vez
             if(targetSlot->length > 0)
             {
                 printf("Movimento invalido! Por favor, selecione outra carta para mover.\n");
@@ -254,7 +257,7 @@ void receiveUserInput()
         }
         else
         {
-            printf("Selecao Invalida! \nOpcoes validas: a,b,c,d,e,f,g,h,1,2,3,4,base!");
+            printf("Selecao Invalida! \nOpcoes validas: a,b,c,d,e,f,g,h,1,2,3,4!");
             free(c);
             receiveUserInput();
             return;
@@ -284,17 +287,17 @@ void checkGameStatus()
 {
     //Ler os slots e verificar se o jogo acabou, e determinar o status do jogo
 
-    //se o length dos top_slots for 13, eles estï¿½o cheios e o jogo acabou em vitï¿½ria
+    //se o length dos top_slots for 13, eles estao cheios e o jogo acabou em vitoria
     if(top_slots[0]->length == 13 && top_slots[1]->length == 13 && top_slots[2]->length == 13 && top_slots[4]->length == 13)
     {
         gameStatus = GAME_STATUS_VICTORY;
         return;
     }
 
-    //Se nenhum movimento for possï¿½vel, o jogo resulta em derrota
+    //Se nenhum movimento for possivel, o jogo resulta em derrota
     Pile *a, *b;
     int j;
-    int isDefeat = 1; //Assume que hï¿½ derrota inicialmente; se achar um movimento vï¿½lido, vira vitï¿½ria
+    int isDefeat = 1; //Assume que ha derrota inicialmente; se achar um movimento valido, vira vitoria
 
     a = mid_slots[0];
     for(j=0; j<8; j++)
@@ -303,7 +306,7 @@ void checkGameStatus()
         if(canMove(a, b) == 1 || canMove(b, a) == 1)
         {
             isDefeat = 0;
-            break; //Jï¿½ foi determinado que nï¿½o hï¿½ derrota
+            break; //Ja foi determinado que nao houve derrota
         }
         if(j<4)
         {

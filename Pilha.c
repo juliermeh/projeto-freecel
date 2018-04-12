@@ -2,11 +2,11 @@
 
 // Pile* createPile();
 // Retorna uma NOVA pilha inicializada
-// Retorna NULL caso não consiga criar uma nova pilha
+// Retorna NULL caso nao consiga criar uma nova pilha
 Pile* createPile()
 {
     Pile* newPile = (Pile*)malloc(sizeof(Pile));
-    if(newPile == NULL) //se não puder achar memória no sistema
+    if(newPile == NULL) //se nao puder achar memoria no sistema
         return NULL;
 
     newPile->start = NULL;
@@ -17,7 +17,7 @@ Pile* createPile()
 
 // int addItemPile(Pile* pile, int value)
 // Cria e adiciona um novo item à pilha, com valor value
-// Retorna -1 se não for bem sucedido, 0 se for bem sucedido
+// Retorna -1 se nao for bem sucedido, 0 se for bem sucedido
 int addNewItemPile(Pile* pile, int value)
 {
     Item* newItem;
@@ -40,7 +40,7 @@ int addItemPile(Pile* pile, Item* item)
     if(item == NULL)
         return -1;
 
-    if(item->next != NULL) //se o next != NULL, ele está em alguma pilha
+    if(item->next != NULL) //se o next != NULL, ele esta� em alguma pilha
         return -1;
 
     item->next = pile->start;
@@ -52,8 +52,8 @@ int addItemPile(Pile* pile, Item* item)
 // Item* removeTopItemPile(Pile* pile)
 // remove o primeiro item da pilha
 // retorna NULL se houver algum erro, ou o item removido para uso futuro
-// O "next" do item removido vira NULL, pois ele é removido da pilha.
-// Nota: o item NÃO É DELETADO DA MEMÓRIA.
+// O "next" do item removido vira NULL, pois ele eh removido da pilha.
+// Nota: o item NAO EH DELETADO DA MEMORIA.
 Item* removeTopItemPile(Pile* pile)
 {
     Item* removedItem;
@@ -68,8 +68,8 @@ Item* removeTopItemPile(Pile* pile)
 }
 
 // int deleteItem(Item* item)
-// deleta e remove o item da memória
-// retorna -1 se o next não for NULL, pois siginifica que ainda está em uma pilha
+// deleta e remove o item da memoria
+// retorna -1 se o next nao for NULL, pois siginifica que ainda esta� em uma pilha
 // retorna 0 se for bem sucedido
 int deleteItem(Item* item)
 {
@@ -81,9 +81,9 @@ int deleteItem(Item* item)
 }
 
 // int deletePile(Pile* pile)
-// deleta a pilha e remove da memória
+// deleta a pilha e remove da memoria
 // remove e deleta qualquer item que esteja na pilha
-// retorna -1 se a pilha não existir
+// retorna -1 se a pilha nao existir
 int deletePile(Pile* pile)
 {
     Item* item;
@@ -103,8 +103,8 @@ int deletePile(Pile* pile)
 
 //Item* getPreviousItemOnPile(Item *item, Pile *pile)
 // retorna o item anterior ao item requerido na pilha
-// retorna o próprio item se ele for o topo da pilha
-// retorna NULL se não for possível, ou se o item não estiver na pilha
+// retorna o proprio item se ele for o topo da pilha
+// retorna NULL se nao for possivel, ou se o item nao estiver na pilha
 Item* getPreviousItemOnPile(Item *item, Pile *pile)
 {
     if(item == NULL || pile == NULL)

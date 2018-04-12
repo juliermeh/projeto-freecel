@@ -1,29 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   main.h
- * Author: jose
- *
- * Created on 5 de Março de 2018, 20:10
- */
 #ifndef MAIN_H_INCLUDED
 #define MAIN_H_INCLUDED
 
 #include "Pilha.h"
 
-//Slot é a casa onde as cartas são postas
-//Em FreeCell, você tem 8 slots vazios na primeira linha(sendo 4 "bases") e 8 slots com cartas
+//Slot sao a casa onde as cartas sao postas
+//Em FreeCell, voce tem 8 slots vazios na primeira linha(sendo 4 "bases") e 8 slots com cartas
 
 Pile *top_slots[4]; //Slots da esquerda de cima, inicialmente vazios
-Pile *base_slots[4]; //Slots base, para onde as cartas vão. Talvez não precise utilizar Pile aqui?
-Pile *mid_slots[8]; //Slots do meio. No inicio do jogo, têm as cartas distribuídas neles
+Pile *base_slots[4]; //Slots base, para onde as cartas vao. Talvez não precise utilizar Pile aqui?
+Pile *mid_slots[8]; //Slots do meio. No inicio do jogo, tem as cartas distribui�das neles
 
 
-//Funções de main.c
+//Funcoes de main.c
 void cardToStr(Item *card, char *c);
 void shuffleArray(int *arr, size_t n);
 void initializeCards();
@@ -37,7 +25,7 @@ int canMoveToBase(Pile *from);
 
 
 #define NOMINMAX 1
-//Usarei minha própria função max
+//Usarei minha propria funcao max
 #define max(a,b) \
    ({ __typeof__ (a) _a = (a); \
        __typeof__ (b) _b = (b); \
