@@ -14,7 +14,7 @@ void drawCard(Item *card)
         free(c);
     }
     else
-    printf("{   } ");
+        printf("{   } ");
 }
 
 
@@ -25,43 +25,43 @@ void drawBoard()
 
     if(top_slots[0] == NULL)
         return;
-/*
+    /*
 
-      #1   #2    #3    #4       C     O     P     E
-    {   } {   } {   } {   } | {   } {   } {   } {   }
-    -------------------------------------------------
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-    {   } {   } {   } {   }   {   } {   } {   } {   }
-      a     b     c     d       e     f     g     h
+          #1   #2    #3    #4       C     O     P     E
+        {   } {   } {   } {   } | {   } {   } {   } {   }
+        -------------------------------------------------
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+        {   } {   } {   } {   }   {   } {   } {   } {   }
+          a     b     c     d       e     f     g     h
 
-    In which column is the card you want to take? _
+        In which column is the card you want to take? _
 
-    (depois de selecionar a carta)
-    To where you want to send this card?
-    Valid options: 1,2,3,4,a,b,c,d,e,f,g,h,BASE
-    Enter with the target: _
-
-
-   // NOTA: opções possíveis também são o, out, base, nipe
+        (depois de selecionar a carta)
+        To where you want to send this card?
+        Valid options: 1,2,3,4,a,b,c,d,e,f,g,h,BASE
+        Enter with the target: _
 
 
-*/
+       // NOTA: opï¿½ï¿½es possï¿½veis tambï¿½m sï¿½o o, out, base, nipe
+
+
+    */
 
     printf(" #1    #2    #3    #4       \3     \4     \5     \6 \n");
-    for(i=0;i<4;i++)
+    for(i=0; i<4; i++)
         drawCard(top_slots[i]->start);
 
     printf("| ");
 
-    for(i=0;i<4;i++)
+    for(i=0; i<4; i++)
         drawCard(base_slots[i]->start);
     //base e topo escritas
 
@@ -75,7 +75,7 @@ void drawBoard()
     //Perguntas
     drawRequestHandle();
 
-    //Solicitar o usuário a executar um comando
+    //Solicitar o usuï¿½rio a executar um comando
     if(gameStatus != GAME_STATUS_DEFEAT && gameStatus != GAME_STATUS_VICTORY)
         receiveUserInput();
 }
@@ -84,11 +84,11 @@ void drawBoard()
 
 void drawMiddle()
 {
-    //Função separada para organizar
-    //Para o jogo, é mais fácil manter pilhas de baixo para cima (pelo display)
-    //Porém para escrever, é mais fácil utilizar pilhas de cima para baixo
+    //Funï¿½ï¿½o separada para organizar
+    //Para o jogo, ï¿½ mais fï¿½cil manter pilhas de baixo para cima (pelo display)
+    //Porï¿½m para escrever, ï¿½ mais fï¿½cil utilizar pilhas de cima para baixo
 
-    //Então vou criar novas pilhas temporárias que são cópias das globais
+    //Entï¿½o vou criar novas pilhas temporï¿½rias que sï¿½o cï¿½pias das globais
     //E utilizar estas para imprimir
     if(mid_slots[0] == NULL)
         return;
@@ -97,12 +97,12 @@ void drawMiddle()
     Item *tempItem;
     Item *tmpVector[8];
     int i, j, max_length;
-    max_length = -1; //Inicialização necessária para garantir o uso
+    max_length = -1; //Inicializaï¿½ï¿½o necessï¿½ria para garantir o uso
 
-    for(i=0;i<8;i++)
+    for(i=0; i<8; i++)
     {
         //Terei de criar NOVAS cartas, pois as originais precisam manter seus atributos
-        //Lembrar de deletar tudo ao fim da função
+        //Lembrar de deletar tudo ao fim da funï¿½ï¿½o
         tempPile[i] = createPile();
         tempItem = mid_slots[i]->start;
         while(tempItem != NULL)
@@ -111,7 +111,7 @@ void drawMiddle()
             tempItem = tempItem->next;
         }
 
-        max_length = max(max_length, tempPile[i]->length); //serão usadas mais tarde
+        max_length = max(max_length, tempPile[i]->length); //serï¿½o usadas mais tarde
 
     }
 
@@ -122,7 +122,8 @@ void drawMiddle()
         {
             if(i == 0)
                 tmpVector[j] = tempPile[j]->start;
-            else if(tmpVector[j] != NULL){
+            else if(tmpVector[j] != NULL)
+            {
                 tmpVector[j] = tmpVector[j]->next;
             }
 
@@ -136,34 +137,34 @@ void drawMiddle()
 
     printf("  a     b     c     d       e     f     g     h   \n");
 
-    //deletar pilas temporárias
+    //deletar pilas temporï¿½rias
     for(i= 0; i < 8; i++)
         deletePile(tempPile[i]);
-    //funçõoes em pile.h já lidam com os items criados
+    //funï¿½ï¿½oes em pile.h jï¿½ lidam com os items criados
 }
 
 void drawRequestHandle()
 {
-    //Função para escrever as perguntas
+    //Funï¿½ï¿½o para escrever as perguntas
     switch(gameStatus)
     {
-        case GAME_STATUS_START:
-            printf("Bem-vindo ao Freecel! Acima, voce vera suas cartas!\n");
-        case GAME_STATUS_CHOSECARD:
-            printf("Escolha a fileira da carta ao qual deseja mover!");
-            printf("\nOpcoes validas: a, b, c, d, e, f, g, h, 1, 2, 3, 4\n");
-            break;
-        case GAME_STATUS_CHOSETARGET:
-            printf("Escolha a fileira de destino da carta ");
-            drawCard(selectedSlot->start);
-            printf("\nOpcoes validas: a, b, c, d, e, f, g, h, 1, 2, 3, 4, base\n");
-            break;
-        case GAME_STATUS_DEFEAT:
-            printf("Nao ha mais possibilidades de movimento. Jogo Encerrado!");
-            break;
-        case GAME_STATUS_VICTORY:
-            printf("Parabens, voce ganhou!!!");
-            break;
+    case GAME_STATUS_START:
+        printf("Bem-vindo ao Freecel! Acima, voce vera suas cartas!\n");
+    case GAME_STATUS_CHOSECARD:
+        printf("Escolha a fileira da carta ao qual deseja mover!");
+        printf("\nOpcoes validas: a, b, c, d, e, f, g, h, 1, 2, 3, 4\n");
+        break;
+    case GAME_STATUS_CHOSETARGET:
+        printf("Escolha a fileira de destino da carta ");
+        drawCard(selectedSlot->start);
+        printf("\nOpcoes validas: a, b, c, d, e, f, g, h, 1, 2, 3, 4, base\n");
+        break;
+    case GAME_STATUS_DEFEAT:
+        printf("Nao ha mais possibilidades de movimento. Jogo Encerrado!");
+        break;
+    case GAME_STATUS_VICTORY:
+        printf("Parabens, voce ganhou!!!");
+        break;
     }
 }
 
@@ -187,7 +188,8 @@ void receiveUserInput()
             i = (int)(c[0] - '1');
             selectedSlot = top_slots[i];
         }
-        else{
+        else
+        {
             printf("Selecao Invalida! \nAs opcoes validas sao: a,b,c,d,e,f,g,h,1,2,3,4!\n");
             free(c);
             receiveUserInput();
@@ -250,7 +252,8 @@ void receiveUserInput()
                 return;
             }
         }
-        else{
+        else
+        {
             printf("Selecao Invalida! \nOpcoes validas: a,b,c,d,e,f,g,h,1,2,3,4,base!");
             free(c);
             receiveUserInput();
@@ -262,7 +265,8 @@ void receiveUserInput()
             moveCardToPile(selectedSlot, targetSlot);
             checkGameStatus();
         }
-        else{
+        else
+        {
             printf("Movimento invalido! Por favor, selecione outra carta para mover.\n");
             free(c);
             selectedSlot = NULL;
@@ -280,24 +284,26 @@ void checkGameStatus()
 {
     //Ler os slots e verificar se o jogo acabou, e determinar o status do jogo
 
-    //se o length dos top_slots for 13, eles estão cheios e o jogo acabou em vitória
-    if(top_slots[0]->length == 13 && top_slots[1]->length == 13 && top_slots[2]->length == 13 && top_slots[4]->length == 13){
+    //se o length dos top_slots for 13, eles estï¿½o cheios e o jogo acabou em vitï¿½ria
+    if(top_slots[0]->length == 13 && top_slots[1]->length == 13 && top_slots[2]->length == 13 && top_slots[4]->length == 13)
+    {
         gameStatus = GAME_STATUS_VICTORY;
         return;
     }
 
-    //Se nenhum movimento for possível, o jogo resulta em derrota
+    //Se nenhum movimento for possï¿½vel, o jogo resulta em derrota
     Pile *a, *b;
     int j;
-    int isDefeat = 1; //Assume que há derrota inicialmente; se achar um movimento válido, vira vitória
+    int isDefeat = 1; //Assume que hï¿½ derrota inicialmente; se achar um movimento vï¿½lido, vira vitï¿½ria
 
     a = mid_slots[0];
     for(j=0; j<8; j++)
     {
         b = mid_slots[j];
-        if(canMove(a, b) == 1 || canMove(b, a) == 1){
+        if(canMove(a, b) == 1 || canMove(b, a) == 1)
+        {
             isDefeat = 0;
-            break; //Já foi determinado que não há derrota
+            break; //Jï¿½ foi determinado que nï¿½o hï¿½ derrota
         }
         if(j<4)
         {

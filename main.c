@@ -13,7 +13,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
+//#include <windows.h>
 #include <math.h>
 #include <time.h>
 #include "main.h"
@@ -43,25 +43,50 @@ void cardToStr(Item *card, char *c)
 
     int category = getCardNipe(card);
     int value = getCardNumber(card);
-    c[0] = ' '; c[1] = ' '; c[2] = ' ';
+    c[0] = ' ';
+    c[1] = ' ';
+    c[2] = ' ';
     switch(value)
     {
-        case 0: c[1] = 'A'; break; //A
-        case 9: c[0] = '1'; c[1] = '0'; break; //10
-        case 10: c[1] = 'J'; break; //J
-        case 11: c[1] = 'Q'; break; //Q
-        case 12: c[1] = 'K'; break; //K
-        default: c[1] = '1'+value; break; //Isto só é possível pois os casos para números > 9 já foram cobertos acima
+    case 0:
+        c[1] = 'A';
+        break; //A
+    case 9:
+        c[0] = '1';
+        c[1] = '0';
+        break; //10
+    case 10:
+        c[1] = 'J';
+        break; //J
+    case 11:
+        c[1] = 'Q';
+        break; //Q
+    case 12:
+        c[1] = 'K';
+        break; //K
+    default:
+        c[1] = '1'+value;
+        break; //Isto só é possível pois os casos para números > 9 já foram cobertos acima
 
     }
 
     switch(category)
     {
-        case 0: c[2] = '\3'; break;
-        case 1: c[2] = '\4'; break;
-        case 2: c[2] = '\5'; break;
-        case 3: c[2] = '\6'; break;
-        default: c[2] = ' '; break;
+    case 0:
+        c[2] = '\3';
+        break;
+    case 1:
+        c[2] = '\4';
+        break;
+    case 2:
+        c[2] = '\5';
+        break;
+    case 3:
+        c[2] = '\6';
+        break;
+    default:
+        c[2] = ' ';
+        break;
     }
 }
 
@@ -103,7 +128,8 @@ void initializeCards()
     }
 
     //Colocar as cartas nos mid_slots
-    for(i=0; i<52; i++){
+    for(i=0; i<52; i++)
+    {
         addNewItemPile(mid_slots[i%8], ar[i]);
     }
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Pilha.h
  * Author: jose
  *
@@ -30,13 +30,13 @@ typedef struct ItemList
 {
     int value; //No futuro, achar um método de transformar este tipo em algo mais dinâmico
     struct ItemList *next;
-}Item;
+} Item;
 
 typedef struct PileStructure
 {
     Item *start;
     int length; // length ao inves de size, pois size ja é definido para outras coisas
-}Pile;
+} Pile;
 
 
 // Pile* createPile();
